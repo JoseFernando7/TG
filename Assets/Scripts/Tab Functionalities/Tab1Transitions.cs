@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Tab1Transitions : MonoBehaviour
 {
     public string colliderID;
 
-    public Image firstImage; // Assign the first image in inspector
-    public Image secondImage; // Assign the second image in inspector
-    public Image thirdImage; // Assign the second image in inspector
+    public SpriteRenderer firstRender; // Assign the first render in inspector
+    public SpriteRenderer secondRender; // Assign the second render in inspector
+    public SpriteRenderer thirdRender; // Assign the second render in inspector
 
     // Start is called before the first frame update
     void Start()
     {
         // First image enabled on start and others don't
-        firstImage.gameObject.SetActive(true);
-        secondImage.gameObject.SetActive(false);
-        thirdImage.gameObject.SetActive(false);
+        firstRender.gameObject.SetActive(true);
+        secondRender.gameObject.SetActive(false);
+        thirdRender.gameObject.SetActive(false);
     }
 
     void OnMouseDown()
@@ -25,16 +22,16 @@ public class Tab1Transitions : MonoBehaviour
         if (colliderID == "tab2")
         {
             // Aquí puedes agregar la acción que deseas ejecutar
-            firstImage.gameObject.SetActive(false);
-            secondImage.gameObject.SetActive(true);
-            thirdImage.gameObject.SetActive(false);
+            firstRender.gameObject.SetActive(false);
+            secondRender.gameObject.SetActive(true);
+            thirdRender.gameObject.SetActive(false);
         }
         else if (colliderID == "tab3")
         {
             // Aquí puedes agregar la acción que deseas ejecutar
-            firstImage.gameObject.SetActive(false);
-            secondImage.gameObject.SetActive(false);
-            thirdImage.gameObject.SetActive(true);
+            firstRender.gameObject.SetActive(false);
+            secondRender.gameObject.SetActive(false);
+            thirdRender.gameObject.SetActive(true);
         }
     }
 }
