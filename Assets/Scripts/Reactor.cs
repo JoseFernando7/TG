@@ -1,6 +1,5 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Reactor : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class Reactor : MonoBehaviour
     private Isotopes isotope = Isotopes.None;
 
     public GameObject dragObject;
+    public Hydrogen counterHydrogenGas;
 
     private void Update()
     {
@@ -33,7 +33,6 @@ public class Reactor : MonoBehaviour
             // Enable the collider again
             dragObject.GetComponent<Collider2D>().enabled = true;
         }
-
     }
 
     public bool IsDraggingHydrogen()
@@ -67,6 +66,9 @@ public class Reactor : MonoBehaviour
             {
                 Debug.Log("Hydrogen isotope placed in the reactor");
                 // TODO: Add the hydrogen isotope reaction functionality
+                counterHydrogenGas.startCounting = true;
+                counterHydrogenGas.IncrementCounterHydrogenGas();
+
                 isotope = Isotopes.None;
             }
         }
