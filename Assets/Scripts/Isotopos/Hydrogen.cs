@@ -13,10 +13,10 @@ public class Hydrogen : MonoBehaviour
     public float fadingTime = 1f;
     // ------------------------------------
 
-    private int counterHydrogenGas = 10; // 20 seconds
+    private int counterHydrogenGas = 10; // 10 seconds
     private float time = 0f;
-
     public bool startCounting = false;
+
     public SpriteRenderer hydrogenGasSprite;
     public GameObject explosion;
 
@@ -38,7 +38,7 @@ public class Hydrogen : MonoBehaviour
         {
             Debug.Log("Hydrogen gas exploded");
             startCounting = false;
-            counterHydrogenGas = 20;
+            counterHydrogenGas = 10;
 
             explosion.gameObject.SetActive(true);
             explosion.GetComponent<Animator>().SetBool("explode", true);

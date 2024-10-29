@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Reactor
   - Hydrogen
+  - Helium
   layers:
   - Default
   - TransparentFX
