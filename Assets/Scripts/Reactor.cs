@@ -8,12 +8,14 @@ public class Reactor : MonoBehaviour
         None,
         Hydrogen,
         Helium,
+        Beryllium
     };
     private Isotopes isotope = Isotopes.None;
 
     public GameObject dragObject;
     public Hydrogen counterHydrogenGas;
     public Helium helium;
+    public Beryllium beryllium;
 
     private void Update()
     {
@@ -28,6 +30,11 @@ public class Reactor : MonoBehaviour
             {
                 isotope = Isotopes.Helium;
             }
+
+            if (IsDraggingBeryllium())
+            {
+                isotope = Isotopes.Beryllium;
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -37,6 +44,7 @@ public class Reactor : MonoBehaviour
 
             CheckHidrogenCollision();
             CheckHeliumCollision();
+            CheckBerylliumCollision();
 
             // Enable the collider again
             dragObject.GetComponent<Collider2D>().enabled = true;
@@ -121,6 +129,50 @@ public class Reactor : MonoBehaviour
                 helium.ChangeWaterToHelium();
                 helium.startCounting = true;
                 helium.DecrementCounterMeltdownByHelium();
+
+                isotope = Isotopes.None;
+            }
+        }
+        else
+        {
+            Debug.Log("The object is not over a reactor");
+            isotope = Isotopes.None;
+        }
+    }
+
+    public bool IsDraggingBeryllium()
+    {
+        Vector2 mousePosition = GetMouseWorldPos();
+
+        // Throw a raycast from the mouse position
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+        if (hit.collider != null && hit.collider.CompareTag("Beryllium"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void CheckBerylliumCollision()
+    {
+        Vector2 mousePosition = GetMouseWorldPos();
+
+        // Throw a raycast from the mouse position
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+        if (hit.collider != null && hit.collider.CompareTag("Reactor"))
+        {
+            // Debug.Log("The object is over a reactor");
+            if (isotope == Isotopes.Beryllium)
+            {
+                Debug.Log("Beryllium isotope placed in the reactor");
+                // TODO: Add the helium isotope reaction functionality
+                beryllium.startCounting = true;
+                beryllium.DecrementCounterOverheatingByBeryllium();
 
                 isotope = Isotopes.None;
             }

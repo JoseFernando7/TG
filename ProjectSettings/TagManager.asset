@@ -7,6 +7,7 @@ TagManager:
   - Reactor
   - Hydrogen
   - Helium
+  - Beryllium
   layers:
   - Default
   - TransparentFX
