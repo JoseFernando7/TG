@@ -6,19 +6,14 @@ using TMPro;
 
 public class Hydrogen : MonoBehaviour
 {
-    // Para el canvas
-    public GameObject canvas;
-    public Image fondo;
-    public TextMeshProUGUI texto;
-    public float fadingTime = 1f;
-    // ------------------------------------
-
     private int counterHydrogenGas = 10; // 10 seconds
     private float time = 0f;
     public bool startCounting = false;
 
     public SpriteRenderer hydrogenGasSprite;
     public GameObject explosion;
+
+    public ShowCanvas showCanvas;
 
     public void IncrementCounterHydrogenGas()
     {
@@ -43,7 +38,7 @@ public class Hydrogen : MonoBehaviour
             explosion.gameObject.SetActive(true);
             explosion.GetComponent<Animator>().SetBool("explode", true);
 
-            ShowCanvas();
+            showCanvas.ShowIsotopeCanvas("El reactor ha explotado");
         }
     }
 
@@ -59,34 +54,6 @@ public class Hydrogen : MonoBehaviour
                 IncrementCounterHydrogenGas();
                 time = 0f;
             }
-        }
-    }
-
-    public void ShowCanvas()
-    {
-        // Habilitar el Canvas
-        canvas.SetActive(true);
-        fondo.raycastTarget = true; // Asegura que el panel bloquee interacciones
-
-        // Iniciar la corutina de desvanecimiento
-        StartCoroutine(Fading());
-    }
-
-    private IEnumerator Fading()
-    {
-        float tiempo = 0f;
-        Color textoColor = texto.color;
-        Color fondoColor = fondo.color;
-
-        // Fading para mostrar
-        while (tiempo < fadingTime)
-        {
-            tiempo += Time.deltaTime;
-            textoColor.a = Mathf.Lerp(0, 1, tiempo / fadingTime);
-            fondoColor.a = Mathf.Lerp(0, 1, tiempo / fadingTime);
-            texto.color = textoColor;
-            fondo.color = fondoColor;
-            yield return null;
         }
     }
 }

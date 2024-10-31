@@ -4,16 +4,10 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEditor;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Helium : MonoBehaviour
 {
-    // Para el canvas
-    public GameObject canvas;
-    public Image fondo;
-    public TextMeshProUGUI texto;
-    public float fadingTime = 1f;
-    // ------------------------------------
-
     private int counterMeltdownByHelium = 10; // 10 seconds
     private float time = 0f;
     public bool startCounting = false;
@@ -27,6 +21,8 @@ public class Helium : MonoBehaviour
     public SpriteRenderer hotCtrlBrs;
     public SpriteRenderer hotCbtlBrs;
     public GameObject explosion;
+
+    public ShowCanvas showCanvas;
 
     public void DecrementCounterMeltdownByHelium()
     {
@@ -67,7 +63,7 @@ public class Helium : MonoBehaviour
             explosion.gameObject.SetActive(true);
             explosion.GetComponent<Animator>().SetBool("explode", true);
 
-            ShowCanvas();
+            showCanvas.ShowIsotopeCanvas("El reactor se ha derretido");
         }
     }
 
@@ -91,33 +87,5 @@ public class Helium : MonoBehaviour
     {
         normalWater.gameObject.SetActive(false);
         heliumGas.gameObject.SetActive(true);
-    }
-
-    public void ShowCanvas()
-    {
-        // Habilitar el Canvas
-        canvas.SetActive(true);
-        fondo.raycastTarget = true; // Asegura que el panel bloquee interacciones
-
-        // Iniciar la corutina de desvanecimiento
-        StartCoroutine(Fading());
-    }
-
-    private IEnumerator Fading()
-    {
-        float tiempo = 0f;
-        Color textoColor = texto.color;
-        Color fondoColor = fondo.color;
-
-        // Fading para mostrar
-        while (tiempo < fadingTime)
-        {
-            tiempo += Time.deltaTime;
-            textoColor.a = Mathf.Lerp(0, 1, tiempo / fadingTime);
-            fondoColor.a = Mathf.Lerp(0, 1, tiempo / fadingTime);
-            texto.color = textoColor;
-            fondo.color = fondoColor;
-            yield return null;
-        }
     }
 }

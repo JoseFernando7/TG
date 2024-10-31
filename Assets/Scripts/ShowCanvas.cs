@@ -14,11 +14,14 @@ public class ShowCanvas : MonoBehaviour
     public float fadingTime = 1f;
     // ------------------------------------
 
-    public void ShowIsotopeCanvas()
+    public void ShowIsotopeCanvas(string message)
     {
         // Habilitar el Canvas
         canvas.SetActive(true);
         fondo.raycastTarget = true; // Asegura que el panel bloquee interacciones
+
+        // Mostrar el mensaje
+        texto.text = message;
 
         // Iniciar la corutina de desvanecimiento
         StartCoroutine(Fading());

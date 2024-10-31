@@ -33,7 +33,7 @@ public class Beryllium : MonoBehaviour
             explosion.gameObject.SetActive(true);
             explosion.GetComponent<Animator>().SetBool("explode", true);
 
-            showCanvas.ShowIsotopeCanvas();
+            showCanvas.ShowIsotopeCanvas("El reactor se ha sobrecalentado");
         }
     }
 
