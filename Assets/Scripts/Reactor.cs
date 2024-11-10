@@ -9,7 +9,8 @@ public class Reactor : MonoBehaviour
         Hydrogen,
         Helium,
         Beryllium,
-        Boro
+        Boro,
+        Carbon
     };
     private Isotopes isotope = Isotopes.None;
 
@@ -18,6 +19,7 @@ public class Reactor : MonoBehaviour
     public Helium helium;
     public Beryllium beryllium;
     public Boro boro;
+    public Carbon carbon;
 
     private void Update()
     {
@@ -42,6 +44,11 @@ public class Reactor : MonoBehaviour
             {
                 isotope = Isotopes.Boro;
             }
+
+            if (IsDraggingCarbon())
+            {
+                isotope = Isotopes.Carbon;
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -53,6 +60,7 @@ public class Reactor : MonoBehaviour
             CheckHeliumCollision();
             CheckBerylliumCollision();
             CheckBoroCollision();
+            CheckCarbonCollision();
 
             // Enable the collider again
             dragObject.GetComponent<Collider2D>().enabled = true;
@@ -225,6 +233,50 @@ public class Reactor : MonoBehaviour
                 // TODO: Add the helium isotope reaction functionality
                 boro.startCounting = true;
                 boro.DecrementCounterShutdownByBoro();
+
+                isotope = Isotopes.None;
+            }
+        }
+        else
+        {
+            Debug.Log("The object is not over a reactor");
+            isotope = Isotopes.None;
+        }
+    }
+
+    public bool IsDraggingCarbon()
+    {
+        Vector2 mousePosition = GetMouseWorldPos();
+
+        // Throw a raycast from the mouse position
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+        if (hit.collider != null && hit.collider.CompareTag("Carbon"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void CheckCarbonCollision()
+    {
+        Vector2 mousePosition = GetMouseWorldPos();
+
+        // Throw a raycast from the mouse position
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+        if (hit.collider != null && hit.collider.CompareTag("Reactor"))
+        {
+            // Debug.Log("The object is over a reactor");
+            if (isotope == Isotopes.Carbon)
+            {
+                Debug.Log("Carbon isotope placed in the reactor");
+                // TODO: Add the carbon isotope reaction functionality
+                carbon.startCountingTritium = true;
+                carbon.DecrementCounterDamageByCarbon();
 
                 isotope = Isotopes.None;
             }
