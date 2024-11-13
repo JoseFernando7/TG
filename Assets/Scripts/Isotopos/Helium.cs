@@ -8,20 +8,22 @@ using Unity.VisualScripting;
 
 public class Helium : MonoBehaviour
 {
-    private int counterMeltdownByHelium = 10; // 10 seconds
+    private int counterMeltdownByHelium = 15; // 10 seconds
     private float time = 0f;
     public bool startCounting = false;
 
     public SpriteRenderer normalWater;
     public SpriteRenderer heliumGas;
-    public SpriteRenderer normalReactor;
-    public SpriteRenderer normalCtrlBrs;
-    public SpriteRenderer normalCbtlBrs;
-    public SpriteRenderer hotReactor;
-    public SpriteRenderer hotCtrlBrs;
-    public SpriteRenderer hotCbtlBrs;
     public GameObject explosion;
 
+    public GameObject secondaryCircuit;
+    public GameObject steamCircuit;
+
+    // For graphics
+    public GameObject neutronMeter;
+    public GameObject termoMeter;
+
+    public ReactorHeating reactorHeating;
     public ShowCanvas showCanvas;
 
     public void DecrementCounterMeltdownByHelium()
@@ -29,41 +31,34 @@ public class Helium : MonoBehaviour
         counterMeltdownByHelium--;
         Debug.Log("Time for reactor to meltdown: " + counterMeltdownByHelium);
 
-        // Disable the normal reactor sprite renderer
-        normalReactor.gameObject.SetActive(false);
-        normalCtrlBrs.gameObject.SetActive(false);
-        normalCbtlBrs.gameObject.SetActive(false);
+        reactorHeating.HeatReactor(counterMeltdownByHelium);
 
-        // Enable the hot reactor sprite renderer
-        hotReactor.gameObject.SetActive(true);
-        hotCtrlBrs.gameObject.SetActive(true);
-        hotCtrlBrs.gameObject.SetActive(true);
+        if (counterMeltdownByHelium == 10)
+        {
+            neutronMeter.GetComponent<Animator>().SetBool("isNeutronHigh", true);
+        }
 
-        // Calculate the oppacity of the sprite
-        float alpha = Mathf.InverseLerp(0, 20, counterMeltdownByHelium);
+        if (counterMeltdownByHelium == 5)
+        {
+            termoMeter.GetComponent<Animator>().SetBool("isTemperatureHigh", true);
+            termoMeter.GetComponent<Animator>().SetBool("isTemperatureLow", false);
 
-        Color hotReactorActualColor = hotReactor.color;
-        hotReactorActualColor.a = 1 - alpha;
-        hotReactor.color = hotReactorActualColor;
-
-        Color hotCtrlBrsActualColor = hotCtrlBrs.color;
-        hotCtrlBrsActualColor.a = 1 - alpha;
-        hotCtrlBrs.color = hotCtrlBrsActualColor;
-
-        Color hotCbtlBrsActualColor = hotCbtlBrs.color;
-        hotCbtlBrsActualColor.a = 1 - alpha;
-        hotCbtlBrs.color = hotCbtlBrsActualColor;
+            // Accelerate the reactor
+            heliumGas.gameObject.GetComponent<Animator>().speed = 2.0f;
+            secondaryCircuit.GetComponent<Animator>().speed = 2.0f;
+            steamCircuit.GetComponent<Animator>().speed = 2.0f;
+        }
 
         if (counterMeltdownByHelium == 0)
         {
             Debug.Log("Reactor has had meltdown");
             startCounting = false;
-            counterMeltdownByHelium = 10;
+            counterMeltdownByHelium = 15;
 
             explosion.gameObject.SetActive(true);
             explosion.GetComponent<Animator>().SetBool("explode", true);
 
-            showCanvas.ShowIsotopeCanvas("El reactor se ha derretido");
+            showCanvas.ShowIsotopeCanvas("Helium");
         }
     }
 

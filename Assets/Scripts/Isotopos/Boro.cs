@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Boro : MonoBehaviour
 {
-    private int counterToShutdown = 10; // 10 seconds
+    private int counterToShutdown = 20; // 10 seconds
     private float time = 0f;
     public bool startCounting = false;
 
@@ -15,6 +15,10 @@ public class Boro : MonoBehaviour
     public GameObject primaryCircuit;
     public GameObject secondaryCircuit;
     public GameObject steamCircuit;
+
+    // For graphics
+    public GameObject neutronMeter;
+    public GameObject termoMeter;
 
     public ShowCanvas showCanvas;
 
@@ -27,9 +31,29 @@ public class Boro : MonoBehaviour
         normalControlBars.gameObject.SetActive(false);
         boroSprite.gameObject.SetActive(true);
 
-        if (counterToShutdown == 7)
+        if (counterToShutdown == 18)
         {
             boroSprite.gameObject.GetComponent<Animator>().SetBool("boro-bars", true);
+        }
+
+        if (counterToShutdown == 10)
+        {
+            neutronMeter.GetComponent<Animator>().SetBool("isNeutronLow", true);
+
+            // Slow down the reactor
+            primaryCircuit.GetComponent<Animator>().speed = 0.5f;
+            secondaryCircuit.GetComponent<Animator>().speed = 0.5f;
+            steamCircuit.GetComponent<Animator>().speed = 0.5f;
+        }
+
+        if (counterToShutdown == 5)
+        {
+            termoMeter.GetComponent<Animator>().SetBool("isTemperatureLow", true);
+
+            // Slow down even more the reactor
+            primaryCircuit.GetComponent<Animator>().speed = 0.2f;
+            secondaryCircuit.GetComponent<Animator>().speed = 0.2f;
+            steamCircuit.GetComponent<Animator>().speed = 0.2f;
         }
 
         if (counterToShutdown == 0)
@@ -43,7 +67,7 @@ public class Boro : MonoBehaviour
             secondaryCircuit.GetComponent<Animator>().SetBool("isReactorShuttedDown", true);
             steamCircuit.GetComponent<Animator>().SetBool("isReactorShuttedDown", true);
 
-            showCanvas.ShowIsotopeCanvas("El reactor se ha apagado por baja intensidad");
+            showCanvas.ShowIsotopeCanvas("Boro");
         }
     }
 

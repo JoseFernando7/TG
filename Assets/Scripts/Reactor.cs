@@ -13,6 +13,7 @@ public class Reactor : MonoBehaviour
         Carbon
     };
     private Isotopes isotope = Isotopes.None;
+    private bool isReacting = false;
 
     public GameObject dragObject;
     public Hydrogen counterHydrogenGas;
@@ -23,14 +24,14 @@ public class Reactor : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isReacting)
         {
             if (IsDraggingHydrogen())
             {
                 isotope = Isotopes.Hydrogen;
             }
 
-            if (IsDraggingHeliumn())
+            if (IsDraggingHelium())
             {
                 isotope = Isotopes.Helium;
             }
@@ -69,6 +70,8 @@ public class Reactor : MonoBehaviour
 
     public bool IsDraggingHydrogen()
     {
+        if (isReacting) return false;
+
         Vector2 mousePosition = GetMouseWorldPos();
 
         // Throw a raycast from the mouse position
@@ -96,12 +99,14 @@ public class Reactor : MonoBehaviour
             // Debug.Log("The object is over a reactor");
             if (isotope == Isotopes.Hydrogen)
             {
+                isReacting = true;
                 Debug.Log("Hydrogen isotope placed in the reactor");
                 // TODO: Add the hydrogen isotope reaction functionality
                 counterHydrogenGas.startCounting = true;
                 counterHydrogenGas.IncrementCounterHydrogenGas();
 
-                isotope = Isotopes.None;
+                //isotope = Isotopes.None;
+                //isReacting = false;
             }
         }
         else
@@ -111,8 +116,10 @@ public class Reactor : MonoBehaviour
         }
     }
 
-    public bool IsDraggingHeliumn()
+    public bool IsDraggingHelium()
     {
+        if (isReacting) return false;
+
         Vector2 mousePosition = GetMouseWorldPos();
 
         // Throw a raycast from the mouse position
@@ -140,13 +147,15 @@ public class Reactor : MonoBehaviour
             // Debug.Log("The object is over a reactor");
             if (isotope == Isotopes.Helium)
             {
+                isReacting = true;
                 Debug.Log("Helium isotope placed in the reactor");
                 // TODO: Add the helium isotope reaction functionality
                 helium.ChangeWaterToHelium();
                 helium.startCounting = true;
                 helium.DecrementCounterMeltdownByHelium();
 
-                isotope = Isotopes.None;
+                //isotope = Isotopes.None;
+                //isReacting = false;
             }
         }
         else
@@ -158,6 +167,8 @@ public class Reactor : MonoBehaviour
 
     public bool IsDraggingBeryllium()
     {
+        if (isReacting) return false;
+
         Vector2 mousePosition = GetMouseWorldPos();
 
         // Throw a raycast from the mouse position
@@ -185,12 +196,14 @@ public class Reactor : MonoBehaviour
             // Debug.Log("The object is over a reactor");
             if (isotope == Isotopes.Beryllium)
             {
+                isReacting = true;
                 Debug.Log("Beryllium isotope placed in the reactor");
                 // TODO: Add the helium isotope reaction functionality
                 beryllium.startCounting = true;
                 beryllium.DecrementCounterOverheatingByBeryllium();
 
-                isotope = Isotopes.None;
+                //isotope = Isotopes.None;
+                //isReacting = false;
             }
         }
         else
@@ -202,6 +215,8 @@ public class Reactor : MonoBehaviour
 
     public bool IsDraggingBoro()
     {
+        if (isReacting) return false;
+
         Vector2 mousePosition = GetMouseWorldPos();
 
         // Throw a raycast from the mouse position
@@ -229,12 +244,14 @@ public class Reactor : MonoBehaviour
             // Debug.Log("The object is over a reactor");
             if (isotope == Isotopes.Boro)
             {
+                isReacting = true;
                 Debug.Log("Boro isotope placed in the reactor");
                 // TODO: Add the helium isotope reaction functionality
                 boro.startCounting = true;
                 boro.DecrementCounterShutdownByBoro();
 
-                isotope = Isotopes.None;
+                //isotope = Isotopes.None;
+                //isReacting = false;
             }
         }
         else
@@ -246,6 +263,8 @@ public class Reactor : MonoBehaviour
 
     public bool IsDraggingCarbon()
     {
+        if (isReacting) return false;
+
         Vector2 mousePosition = GetMouseWorldPos();
 
         // Throw a raycast from the mouse position
@@ -273,12 +292,14 @@ public class Reactor : MonoBehaviour
             // Debug.Log("The object is over a reactor");
             if (isotope == Isotopes.Carbon)
             {
+                isReacting = true;
                 Debug.Log("Carbon isotope placed in the reactor");
                 // TODO: Add the carbon isotope reaction functionality
                 carbon.startCountingTritium = true;
                 carbon.DecrementCounterDamageByCarbon();
 
-                isotope = Isotopes.None;
+                //isotope = Isotopes.None;
+                //isReacting = false;
             }
         }
         else

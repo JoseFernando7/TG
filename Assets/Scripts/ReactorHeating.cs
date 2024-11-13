@@ -13,10 +13,7 @@ public class ReactorHeating : MonoBehaviour
 
     public void HeatReactor(int counter)
     {
-        // Disable the normal reactor sprite renderer
-        normalReactor.gameObject.SetActive(false);
-        normalCtrlBrs.gameObject.SetActive(false);
-        normalCbtlBrs.gameObject.SetActive(false);
+        VanishNormalReactor(counter);
 
         // Enable the hot reactor sprite renderer
         hotReactor.gameObject.SetActive(true);
@@ -37,5 +34,31 @@ public class ReactorHeating : MonoBehaviour
         Color hotCbtlBrsActualColor = hotCbtlBrs.color;
         hotCbtlBrsActualColor.a = 1 - alpha;
         hotCbtlBrs.color = hotCbtlBrsActualColor;
+    }
+
+    void VanishNormalReactor(int counter)
+    {
+        // Calculate the oppacity of the sprite
+        float alpha = Mathf.InverseLerp(0, 20, counter);
+
+        Color hotReactorActualColor = hotReactor.color;
+        hotReactorActualColor.a = alpha;
+        hotReactor.color = hotReactorActualColor;
+
+        Color hotCtrlBrsActualColor = hotCtrlBrs.color;
+        hotCtrlBrsActualColor.a = alpha;
+        hotCtrlBrs.color = hotCtrlBrsActualColor;
+
+        Color hotCbtlBrsActualColor = hotCbtlBrs.color;
+        hotCbtlBrsActualColor.a = alpha;
+        hotCbtlBrs.color = hotCbtlBrsActualColor;
+
+        if (alpha == 0)
+        {
+            // Disable the normal reactor sprite renderer
+            normalReactor.gameObject.SetActive(false);
+            normalCtrlBrs.gameObject.SetActive(false);
+            normalCbtlBrs.gameObject.SetActive(false);
+        }
     }
 }

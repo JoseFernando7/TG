@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Carbon : MonoBehaviour
 {
-    private int counterToTritium = 5; // 10 seconds
+    private int counterToTritium = 10; // 10 seconds
     private int counterToOxide = 7; // 10 seconds
     private int counterToReactorToGetDamaged = 10; // 10 seconds
     private float time = 0f;
@@ -19,6 +19,9 @@ public class Carbon : MonoBehaviour
     public SpriteRenderer carbonSprite;
     public SpriteRenderer tritioSprite;
     public SpriteRenderer oxideSprite;
+
+    // For graphics
+    public GameObject neutronMeter;
 
     public GameObject explosion;
     public ShowCanvas showCanvas;
@@ -37,7 +40,7 @@ public class Carbon : MonoBehaviour
         {
             //startCountingTritium = false;
             startCountingToOxide = true;
-            counterToTritium = 5;
+            counterToTritium = 10;
         }
 
         if (startCountingToOxide)
@@ -59,6 +62,8 @@ public class Carbon : MonoBehaviour
                 oxideSprite.gameObject.SetActive(true);
                 startCountingToDamage = true;
                 startCountingToOxide = false;
+
+                neutronMeter.GetComponent<Animator>().SetBool("isNeutronHigh", true);
             }
         }
 
@@ -79,7 +84,7 @@ public class Carbon : MonoBehaviour
 
             startCountingTritium = false;
 
-            showCanvas.ShowIsotopeCanvas("El reactor se ha dañado por el óxido");
+            showCanvas.ShowIsotopeCanvas("Carbon");
         }
     }
 

@@ -18,7 +18,7 @@ public class Hydrogen : MonoBehaviour
     public void IncrementCounterHydrogenGas()
     {
         counterHydrogenGas--;
-        Debug.Log("Time for hydrogen gas to explode: " + counterHydrogenGas);
+        // Debug.Log("Time for hydrogen gas to explode: " + counterHydrogenGas);
 
         // Enable the sprite renderer
         hydrogenGasSprite.gameObject.SetActive(true);
@@ -31,14 +31,14 @@ public class Hydrogen : MonoBehaviour
 
         if (counterHydrogenGas == 0)
         {
-            Debug.Log("Hydrogen gas exploded");
+            // Debug.Log("Hydrogen gas exploded");
             startCounting = false;
             counterHydrogenGas = 10;
 
             explosion.gameObject.SetActive(true);
             explosion.GetComponent<Animator>().SetBool("explode", true);
 
-            showCanvas.ShowIsotopeCanvas("El reactor ha explotado");
+            showCanvas.ShowIsotopeCanvas("Hydrogen");
         }
     }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d01886ef3d3a9984eb5e30c69e303f69
+guid: 7b1239730b4e11747a4d12040b3aa5c3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,70 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: GR-Temperatura_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 330
-        height: 250
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08778ea0fae11c646a4f93aeddb041ad
-      internalID: 1721570780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GR-Temperatura_1
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 0
-        width: 330
-        height: 250
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f021d19e7edf0f34c9376b8565ff8d42
-      internalID: -1602296706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GR-Temperatura_2
-      rect:
-        serializedVersion: 2
-        x: 660
-        y: 0
-        width: 330
-        height: 250
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd38cd9c3ed54854c96fec15a072acae
-      internalID: -783517194
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -182,10 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      GR-Temperatura_0: 1721570780
-      GR-Temperatura_1: -1602296706
-      GR-Temperatura_2: -783517194
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
