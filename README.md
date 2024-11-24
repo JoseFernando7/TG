@@ -19,7 +19,7 @@ Este simulador fue desarrollado en Unity y está diseñado para ejecutarse en **
 - **Procesador**: Intel Core i5 o equivalente
 - **Memoria RAM**: 4 GB mínimo
 - **Tarjeta gráfica**: Compatible con DirectX 11
-- **Espacio en disco**: 500 MB disponibles
+- **Espacio en disco**: 50 MB disponibles
 
 ## Instrucciones de Descarga y Uso
 
@@ -27,7 +27,7 @@ Este simulador fue desarrollado en Unity y está diseñado para ejecutarse en **
 
 Para descargar la última versión del simulador, dirígete a la sección de **Releases** de este repositorio en GitHub:
 
-- [**Releases**](https://github.com/tu_usuario/tu_repositorio/releases)
+- [**Releases**](https://github.com/JoseFernando7/TG/releases)
 
 En la página de releases, encontrarás un archivo `.zip` con el build del proyecto. Descárgalo y extrae el contenido en una carpeta de tu elección.
 
