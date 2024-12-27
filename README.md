@@ -48,7 +48,3 @@ Una vez que hayas descargado y extraído el archivo, busca el archivo ejecutable
 
 ¡Las contribuciones son bienvenidas! Si tienes sugerencias, mejoras o encuentras un bug, no dudes en abrir un **Issue** o enviar un **Pull Request**. 
 
-## Licencia
-
-Este proyecto está bajo la **Licencia MIT**. Para más detalles, consulta el archivo [LICENSE](LICENSE).
-
