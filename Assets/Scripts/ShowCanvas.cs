@@ -27,7 +27,8 @@ public class ShowCanvas : MonoBehaviour
                             " disminuyendo la velocidad de los neutrones para que sean captados eficientemente por el combustible nuclear." + 
                             " Sin embargo, si se acumula gas hidrógeno en el sistema, este podría mezclarse con oxígeno, formando una mezcla explosiva." +
                             " Esto ocurre porque el hidrógeno es extremadamente inflamable y, bajo ciertas condiciones, puede detonar en presencia de oxígeno" +
-                            " y una fuente de ignición, poniendo en riesgo la seguridad del reactor.";
+                            " y una fuente de ignición, poniendo en riesgo la seguridad del reactor." +
+                            "\nTiempo aproximado de reacción: 22 horas";
                 return strings;
 
             case "Helium":
@@ -35,7 +36,8 @@ public class ShowCanvas : MonoBehaviour
                 strings[1] = "Reemplazar el agua por helio como moderador no es efectivo, ya que el helio no modera neutrones" +
                             " de manera significativa debido a su baja capacidad de interacción con ellos. Al no moderar adecuadamente los neutrones," +
                             " el combustible puede experimentar fisión descontrolada, generando un aumento en la temperatura del núcleo." +
-                            " Esto puede llevar al sobrecalentamiento y, en casos extremos, al derretimiento del núcleo";
+                            " Esto puede llevar al sobrecalentamiento y, en casos extremos, al derretimiento del núcleo" +
+                            "\nTiempo aproximado de reacción: 3 horas";
                 return strings;
 
             case "Berylium":
@@ -43,7 +45,8 @@ public class ShowCanvas : MonoBehaviour
                 strings[1] = "El berilio es un material moderador que se utiliza en reactores de agua pesada para ralentizar los neutrones." +
                             " Sin embargo, si se sobrecalienta, el berilio puede perder sus propiedades moderadoras y hacer que los neutrones" +
                             " reboten en este material generando así una aceleración de la reacción de fisión." +
-                            " Esto puede provocar un aumento en la temperatura del núcleo y, en casos extremos, el sobrecalentamiento del reactor.";
+                            " Esto puede provocar un aumento en la temperatura del núcleo y, en casos extremos, el sobrecalentamiento del reactor." +
+                            "\nTiempo aproximado de reacción: 15 horas";
                 return strings;
 
             case "Boro":
@@ -52,14 +55,17 @@ public class ShowCanvas : MonoBehaviour
                             " Cuando se introduce al núcleo, el boro-10 absorbe neutrones de manera eficiente, lo cual disminuye la cantidad de neutrones" +
                             " disponibles para mantener la reacción en cadena de fisión. Esto permite regular o detener la reacción, evitando" +
                             " que el reactor alcance un estado de sobrecalentamiento o inestabilidad. Este procedimiento es usado frecuentemente" +
-                            " como protocolo para apagar un reactor nuclear de forma segura.";
+                            " como protocolo para apagar un reactor nuclear de forma segura." + 
+                            "\nTiempo aproximado de reacción: 40 horas";
                 return strings;
 
             case "Carbon":
                 strings[0] = "El reactor se ha dañado por el óxido";
                 strings[1] = "La exposición prolongada de Carbono-14 puede inducir la formación de tritio (3H), un isótopo radiactivo del hidrógeno." +
                             " La presencia de tritio aumenta la radioactividad del reactor y, de no controlarse, puede llevar a la oxidación" +
-                            " y degradación de los componentes de carbono así como los demás materiales que componen el reactor.";
+                            " y degradación de los componentes de carbono así como los demás materiales que componen el reactor." + 
+                            "\nTiempo aproximado de generación de Tritio: 5 años" +
+                            "\nTiempo aproximado de oxidación por Tritio: 7 semanas";
                 return strings;
 
             default:

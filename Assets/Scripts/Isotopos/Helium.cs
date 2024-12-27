@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class Helium : MonoBehaviour
 {
-    private int counterMeltdownByHelium = 15; // 10 seconds
+    private int counterMeltdownByHelium = 10; // 10 seconds that represents 3 hours
     private float time = 0f;
     public bool startCounting = false;
 

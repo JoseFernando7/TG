@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class Carbon : MonoBehaviour
 {
-    private int counterToTritium = 10; // 10 seconds
-    private int counterToOxide = 7; // 10 seconds
-    private int counterToReactorToGetDamaged = 10; // 10 seconds
+    private int counterToTritium = 30; // 30 seconds that represents 5 years
+    private int counterToOxide = 15; // 15 seconds that represents 7 weeks
+    private int counterToReactorToGetDamaged = 5; // 5 seconds
     private float time = 0f;
 
     public bool startCountingTritium = false;

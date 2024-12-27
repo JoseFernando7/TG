@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Boro : MonoBehaviour
 {
-    private int counterToShutdown = 20; // 10 seconds
+    private int counterToShutdown = 25; // 25 seconds that represents 25 hours
     private float time = 0f;
     public bool startCounting = false;
 

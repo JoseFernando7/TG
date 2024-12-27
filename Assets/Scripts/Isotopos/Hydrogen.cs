@@ -6,7 +6,7 @@ using TMPro;
 
 public class Hydrogen : MonoBehaviour
 {
-    private int counterHydrogenGas = 10; // 10 seconds
+    private int counterHydrogenGas = 24; // 24 seconds that represents 24 hours
     private float time = 0f;
     public bool startCounting = false;
 

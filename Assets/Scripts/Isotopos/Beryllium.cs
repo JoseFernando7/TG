@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Beryllium : MonoBehaviour
 {
-    private int counterToOverheating = 20; // 20 seconds
+    private int counterToOverheating = 17; // 17 seconds that represents 17 hours
     private float time = 0f;
     public bool startCounting = false;
 
